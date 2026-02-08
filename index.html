@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Be My Valentine 💘</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      /*background: linear-gradient(135deg, #ffd6e8, #ffeef5);*/
+      background-image: url(images/Valentines_Day_background.jpg);
+      background-size: cover;
+      font-family: "Comic Sans MS", "Poppins", cursive;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 50px;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(255, 77, 109, 0.3);
+      position: relative;
+      z-index: 10;
+      animation: popIn 0.8s ease;
+    }
+
+    @keyframes popIn {
+      0% { transform: scale(0.7); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .cat-image{
+      padding: 5px;
+      width: 150px;
+    }
+
+    h1 {
+      color: #ff4d6d;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+        margin-top: 30px;
+        position: relative;
+        height: 120px;
+        width: 320px;
+        margin-left: 220px;
+    }
+
+    button {
+      font-size: 20px;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    #yesBtn {
+      background: #ff4d6d;
+      color: white;
+      box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+    }
+
+    #noBtn {
+      background: #ffd1dc;
+      color: #ff4d6d;
+      position: absolute;
+      left: 270px;
+      top: 3px;
+      transition: left 0.2s ease, top 0.2s ease;
+    }
+    .heart {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0;
+      }
+      20% { opacity: 0.8; }
+      100% {
+        transform: translateY(-10vh) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img src="images/Cat_flower2.gif" alt="">
+    <h1>Important question, Shescakes… will you be my Valentine? 💘</h1>
+    <div class="buttons">
+      <button id="yesBtn">Yes 💕</button>
+      <button id="noBtn">No</button>
+    </div>
+  </div>
+
+  <script>
+  const noBtn = document.getElementById("noBtn");
+  const yesBtn = document.getElementById("yesBtn");
+  const container = document.querySelector(".buttons");
+
+  function moveNoButton() {
+    const maxX = container.clientWidth - noBtn.offsetWidth;
+    const maxY = container.clientHeight - noBtn.offsetHeight;
+
+    const x = Math.random() * maxX;
+    const y = Math.random() * maxY;
+
+    noBtn.style.left = `${x}px`;
+    noBtn.style.top = `${y}px`;
+  }
+
+  // Move on hover
+  noBtn.addEventListener("mouseenter", moveNoButton);
+
+  // Move on click
+  noBtn.addEventListener("click", (e) => {
+    e.preventDefault(); // stops accidental click
+    moveNoButton();
+  });
+
+  yesBtn.addEventListener("click", () => {
+    window.location.href = "date.html";
+  });
+</script>
+
+
+</body>
+</html>
